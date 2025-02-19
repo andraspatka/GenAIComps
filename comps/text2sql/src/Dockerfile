@@ -7,9 +7,11 @@ ENV LANG=C.UTF-8
 ARG ARCH=cpu
 
 RUN apt-get update -y && apt-get install -y --no-install-recommends --fix-missing \
+    git \
     build-essential \
     libgl1-mesa-glx \
-    libjemalloc-dev
+    libjemalloc-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -s /bin/bash user && \
     mkdir -p /home/user && \
